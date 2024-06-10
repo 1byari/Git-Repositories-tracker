@@ -6,10 +6,19 @@ from .database import parse_github_response
 
 
 class EventsAPI(Resource):
+    """
+    This class defines an API endpoint for fetching events from multiple GitHub repositories,
+    parsing the response, calculating statistics, and returning the results.
+    """
     def get(self):
+        """
+        Handles HTTP GET requests for the /info endpoint 
+        """
         with open('./config.json', 'r') as f:
             config_data = json.load(f)
         result = {"repos_time_statistics": []}
+        if len(config_data['repositories']) > 5:
+            raise ValueError("Number of repositories exceeds the maximum limit of 5.")
         for repo_name in config_data['repositories']:
             response, code = get_events(repo_name)
             if code != 200:
