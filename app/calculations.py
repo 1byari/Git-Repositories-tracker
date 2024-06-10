@@ -4,14 +4,22 @@ from .database import convert_events_to_df
 
 
 def calculate_events_statistics(repo_name):
+    """
+    Calculate the average time delta between each type of events for a given repository.
+    """
     df = convert_events_to_df(repo_name)
     week_ago_date = (datetime.now(UTC) - timedelta(days=7)).strftime('%Y-%m-%d %H:%M:%S')
     last_week_events = df[df.created_at > week_ago_date]
+
     if len(last_week_events) <= 500 and len(last_week_events) > 0:
         data = last_week_events
     else:
         data = df.head(500)
+    
+    # Convert the 'created_at' column to datetime 
     data['created_at'] = pd.to_datetime(df['created_at'], errors='coerce')
+
+    # Calculates the average time delta for each event type
     data['time_delta'] = data.groupby('type')['created_at'].diff(1).dt.total_seconds().abs()
     average_data = data.groupby('type')['time_delta'].mean().fillna(0).round(3)
     return average_data.to_dict()

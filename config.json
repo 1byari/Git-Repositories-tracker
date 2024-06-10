@@ -1,6 +1,6 @@
 {
     "repositories" : [
-        "1byari/Python-folders-synchronizer",
-        "jordanbaird/Ice"
-    ]
+        "1byari/Python-folders-synchronizer"
+    ],
+    "github_access_token" : ""
 }
