@@ -9,12 +9,14 @@ This program provides an API for tracking the average time between events in Git
 
 ## Installation
 1. Clone this repository to your local machine.
-2. Install the required Python packages using `pip install -r requirements.txt`
+2. Install the required Python packages using 
+```pip install -r requirements.txt```
 3. Configure the `config.json` file with your GitHub access token 
 4. Configure the `config.json` file with repository names in `"user/repo_name"` format (up to 5).
 
 ## Usage
-1. Run the `app.py` file:
+1. Run the `run.py` file in the root diretory using the following command:
+```python run.py```
 2. Navigate to the address displayed in the terminal
 3. Go to the `/info` endpoint
 
