@@ -107,19 +107,6 @@ def delete_extra_events(repo_id: int) -> None:
             db.session.delete(event)
         db.session.commit()
 
-# def delete_unused_repos_data():
-#     """
-#     Deletes events from the database for repositories not listed in config.json.
-#     This function is currently commented out.
-#     """
-#     all_repos = db.session.query(EventModel.repo).distinct().all()
-#     with open('./config.json', 'r') as f:
-#         config_data = json.load(f)
-#     for repo in all_repos:
-#         repo_name = repo[0]
-#         if repo_name not in config_data["repositories"]:
-#             db.session.query(EventModel).filter_by(repo=repo_name).delete()
-#         db.session.commit()
 
 def synchronize_db_events() -> None:
     """
