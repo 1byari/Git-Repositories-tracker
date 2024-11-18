@@ -11,7 +11,8 @@ This API allows users to manage and track GitHub repositories for events. It sup
 1. Clone this repository to your local machine.
 2. Install the required Python packages using 
 ```pip install -r requirements.txt```
-3. Configure the `config.json` file with your GitHub access token 
+3. Configure the `config.json` file with your GitHub access token
+4. Run the `jwt_secret_key_generator.py` file to configure JWT secret key for your project
 
 ## Usage
 1. Run the `run.py` file in the root diretory using the following command:
